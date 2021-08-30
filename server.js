@@ -1,12 +1,19 @@
 require('dotenv').config()
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
 
-app.get('/', (req, res)=>{
-    res.send(process.env.TZ)
+mongoose.connect(process.env.DB, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+}, ()=>{
+    console.log("DB Connected");
 })
 
-app.listen(3000, ()=>{
-    console.log("server started on port 3000");
+
+
+port = process.env.PORT || 8000
+app.listen(port, ()=>{
+    console.log(`server started on port ${port}`);
 })
