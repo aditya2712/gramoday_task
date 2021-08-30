@@ -3,6 +3,7 @@ const router = require('express').Router();
 const { isValidObjectId } = require('mongoose');
 const {Report, Aggr_report} = require('../models/reports');
 
+// POST route to create a report
 router.post('/', async (req, res)=>{
     const {reportDetails} = req.body;
     let {userID, marketID, marketName, marketType, cmdtyID, cmdtyName, priceUnit, convFctr, price} = reportDetails
@@ -60,6 +61,7 @@ router.post('/', async (req, res)=>{
     }
 })
 
+// GET route to get an aggregated report
 router.get('/', async (req, res)=>{
     try{
         report_id = req.query.reportID;
@@ -72,7 +74,6 @@ router.get('/', async (req, res)=>{
         for(i=0;i<populated_aggr_report.reports.length;i++){
             users.add(populated_aggr_report.reports[i].user_id)
         }
-        console.log(users);
 
         res.status(200).json({
             _id: aggr_report._id,
