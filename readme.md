@@ -41,3 +41,11 @@ Open http://localhost:8000 to view it in your browser.
 
 The app will automatically reload if you make changes to the code.
 You will see the build errors and warnings in the console.
+
+**Step 4: Run the tests.**
+
+We can run all the tests by:
+
+```
+$ npm test
+```
