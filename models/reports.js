@@ -53,9 +53,9 @@ const aggr_report_schema = mongoose.Schema({
     market_name: String,
     cmdty_id: String,
     cmdty_name: String,
-    // timestamps: {
-    //     updatedAt: 'timestamp'
-    // }
+    
+},{
+    timestamps: true
 });
 
 const Report = mongoose.model('Report', report_schema);

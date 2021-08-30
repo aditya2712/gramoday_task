@@ -8,7 +8,7 @@ router.get('/', (req, res)=>{
 })
 
 // Temporary route
-router.get('/deleteDB', async (req, res)=>{
+router.get('/delete-db', async (req, res)=>{
     const {Aggr_report, Report} = require('../models/reports');
     await Aggr_report.deleteMany({});
     await Report.deleteMany({});
