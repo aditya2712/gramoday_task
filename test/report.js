@@ -13,7 +13,7 @@ describe('test for reports APIs', ()=>{
         it('should create a report and aggregated report', ()=>{
             const report = {
                 reportDetails: {
-                    userID: "user-1",
+                    userID: "test-user-1",
                     marketID: "market-1",
                     marketName: "Vashi Navi Mumbai",
                     cmdtyID: "cmdty-1",
@@ -28,7 +28,21 @@ describe('test for reports APIs', ()=>{
                 .post('/reports')
                 .send(report)
                 .end((err, res)=>{
-                    res.should.have.status(201)
+                    res.should.have.status(201);
+                    res.body.should.have.property('status').eq('success');
+                    res.body.should.have.property('reportID');
+                });
+        });
+    });
+
+    // Test GET API
+    describe('test /reports?reportID=612d0ff278cc822e1dada261 GET', ()=>{
+        it('should not GET aggregated report due to wrong id', ()=>{
+            chai.request(server)
+                .get('/reports?reportID=wrongID')
+                .end((err, res)=>{
+                    res.should.have.status(400);
+                    res.text.should.be.eq("Invalid report ID");
                 });
         });
     });
