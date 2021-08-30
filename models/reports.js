@@ -46,9 +46,9 @@ const report_schema = mongoose.Schema({
 const aggr_report_schema = mongoose.Schema({
     reports: [{
         type:mongoose.Schema.Types.ObjectId,
-        ref: 'report',
+        ref: 'Report',
     }],
-    average_price: Number,
+    average_price: mongoose.Schema.Types.Decimal128,
     market_id: String,
     market_name: String,
     cmdty_id: String,
@@ -58,8 +58,8 @@ const aggr_report_schema = mongoose.Schema({
     // }
 });
 
-const Report = mongoose.model('report', report_schema);
-const Aggr_report = mongoose.model('aggr_report', aggr_report_schema);
+const Report = mongoose.model('Report', report_schema);
+const Aggr_report = mongoose.model('Aggr_report', aggr_report_schema);
 
 module.exports = {
     Report, Aggr_report

@@ -7,4 +7,12 @@ router.get('/', (req, res)=>{
     res.send("Only /reports routes are working right now!!");
 })
 
+// Temporary route
+router.get('/deleteDB', async (req, res)=>{
+    const {Aggr_report, Report} = require('../models/reports');
+    await Aggr_report.deleteMany({});
+    await Report.deleteMany({});
+    res.send("db cleared");
+})
+
 module.exports = router;
