@@ -1,44 +1,44 @@
 const mongoose = require('mongoose')
 
 const report_schema = mongoose.Schema({
-    user_id = {
+    user_id: {
         type: String,
         required: true
     },
-    market_id = {
+    market_id: {
         type: String,
         required: true
     },
-    market_name = {
+    market_name: {
         type: String, 
         required: true,
     },
-    market_type = {
+    market_type: {
         type: String,
         required: true,
     },
-    cmdty_id = {
+    cmdty_id: {
         type: String,
         required: true,
     },
-    cmdty_name = {
+    cmdty_name: {
         type: String,
         required: true,
     },
-    price_unit = {
+    price_unit: {
         type: String,
         required: true,
     },
-    conv_fact = {
+    conv_fctr: {
         type: Number,
         required: true,
     },
-    price = {
+    price: {
         type: Number,
         required: true,
     },
-    price_per_kg = {
-        type: Number,
+    price_per_kg: {
+        type: mongoose.Schema.Types.Decimal128,
         require: true,
     }
 });
@@ -53,14 +53,14 @@ const aggr_report_schema = mongoose.Schema({
     market_name: String,
     cmdty_id: String,
     cmdty_name: String,
-    timestamps: {
-        updatedAt: 'timestamp'
-    }
+    // timestamps: {
+    //     updatedAt: 'timestamp'
+    // }
 });
 
-const report = mongoose.model('report', report_schema);
-const aggr_report = mongoose.model('aggr_report', aggr_report_schema);
+const Report = mongoose.model('report', report_schema);
+const Aggr_report = mongoose.model('aggr_report', aggr_report_schema);
 
 module.exports = {
-    report, aggr_report
+    Report, Aggr_report
 };
